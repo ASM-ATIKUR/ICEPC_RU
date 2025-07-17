@@ -66,7 +66,7 @@ router.post('/', async(req, res) =>{
             subject: 'Verify your ICE Programming Club profile',
             html: `Click <a href = '${url}'> here </a> to verify your email.`
         });
-        return res.status(201).send(`Varificaition email send to ${email}`);
+        return res.status(201).send(`Varificaition email send to ${email} : <a href = '${url}'> Manually Verify </a>`);
     } catch(err){
         return res.status(500).send(err);
     }

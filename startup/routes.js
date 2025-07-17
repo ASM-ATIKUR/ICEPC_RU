@@ -44,7 +44,7 @@ module.exports = function(app)
     // Swagger documentation
     if (process.env.NODE_ENV === 'development') {
         const swaggerUi = require('swagger-ui-express');
-        const swaggerSpec = require('./utils/swagger');
+        const swaggerSpec = require('../utils/swagger');
         app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
     }
 }
