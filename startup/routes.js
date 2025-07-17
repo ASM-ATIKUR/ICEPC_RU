@@ -24,6 +24,7 @@ module.exports = function(app)
     // Adding all api endpoint
     app.use(express.json());
     app.use(upload());
+    
     app.use('/api', express.static('public'));
 
     app.use('/api/notices', notices);
@@ -39,5 +40,11 @@ module.exports = function(app)
     app.use('/api/vjudge', vjudge);
     app.use('/api/resources', resources);
     app.use('/api/mod', mod);
-    
+
+    // Swagger documentation
+    if (process.env.NODE_ENV === 'development') {
+        const swaggerUi = require('swagger-ui-express');
+        const swaggerSpec = require('./utils/swagger');
+        app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+    }
 }
